@@ -1,0 +1,12 @@
+{
+  "name": "Siraat – Your Companion to Jannah",
+  "short_name": "Siraat",
+  "description": "Strengthen iman through daily worship, reflection, and remembrance.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f6f4ea",
+  "theme_color": "#1f5541",
+  "icons": [
+    { "src": "/favicon.ico", "sizes": "any", "type": "image/x-icon" }
+  ]
+}

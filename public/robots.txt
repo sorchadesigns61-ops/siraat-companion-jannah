@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /auth
+Disallow: /dashboard
+Disallow: /salah
+Disallow: /journal
+Disallow: /gratitude
+Disallow: /quran
+Disallow: /dhikr
