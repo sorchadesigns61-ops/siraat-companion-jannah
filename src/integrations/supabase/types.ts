@@ -14,7 +14,171 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      gratitude_entries: {
+        Row: {
+          blessings: string[] | null
+          closer_moment: string | null
+          created_at: string
+          date: string
+          grateful_for: string | null
+          id: string
+          lesson: string | null
+          user_id: string
+        }
+        Insert: {
+          blessings?: string[] | null
+          closer_moment?: string | null
+          created_at?: string
+          date?: string
+          grateful_for?: string | null
+          id?: string
+          lesson?: string | null
+          user_id: string
+        }
+        Update: {
+          blessings?: string[] | null
+          closer_moment?: string | null
+          created_at?: string
+          date?: string
+          grateful_for?: string | null
+          id?: string
+          lesson?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      journal_entries: {
+        Row: {
+          blessings: string | null
+          created_at: string
+          date: string
+          did_well: string | null
+          duas: string | null
+          id: string
+          lessons: string | null
+          mistakes: string | null
+          mood: string | null
+          tomorrow: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          blessings?: string | null
+          created_at?: string
+          date?: string
+          did_well?: string | null
+          duas?: string | null
+          id?: string
+          lessons?: string | null
+          mistakes?: string | null
+          mood?: string | null
+          tomorrow?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          blessings?: string | null
+          created_at?: string
+          date?: string
+          did_well?: string | null
+          duas?: string | null
+          id?: string
+          lessons?: string | null
+          mistakes?: string | null
+          mood?: string | null
+          tomorrow?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          display_name: string | null
+          id: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          display_name?: string | null
+          id: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          display_name?: string | null
+          id?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      quran_log: {
+        Row: {
+          ayah_from: number | null
+          ayah_to: number | null
+          created_at: string
+          date: string
+          favourite: boolean | null
+          id: string
+          reflection: string | null
+          surah: string
+          user_id: string
+        }
+        Insert: {
+          ayah_from?: number | null
+          ayah_to?: number | null
+          created_at?: string
+          date?: string
+          favourite?: boolean | null
+          id?: string
+          reflection?: string | null
+          surah: string
+          user_id: string
+        }
+        Update: {
+          ayah_from?: number | null
+          ayah_to?: number | null
+          created_at?: string
+          date?: string
+          favourite?: boolean | null
+          id?: string
+          reflection?: string | null
+          surah?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      salah_log: {
+        Row: {
+          created_at: string
+          date: string
+          id: string
+          on_time: boolean | null
+          prayed: boolean
+          prayer: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          date: string
+          id?: string
+          on_time?: boolean | null
+          prayed?: boolean
+          prayer: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          date?: string
+          id?: string
+          on_time?: boolean | null
+          prayed?: boolean
+          prayer?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
