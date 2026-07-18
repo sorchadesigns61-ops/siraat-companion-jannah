@@ -74,7 +74,7 @@ export function AppShell({ children }: { children: ReactNode }) {
         <main className="min-w-0 flex-1">{children}</main>
 
         {/* Mobile bottom tab bar */}
-        <nav className="sticky bottom-0 z-30 grid grid-cols-6 border-t bg-background/95 backdrop-blur lg:hidden">
+        <nav className="sticky bottom-0 z-30 grid grid-cols-7 border-t bg-background/95 backdrop-blur lg:hidden">
           {NAV.map((n) => {
             const Active = location.pathname === n.to;
             return (
