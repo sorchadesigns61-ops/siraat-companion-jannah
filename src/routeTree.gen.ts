@@ -13,6 +13,7 @@ import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedSalahRouteImport } from './routes/_authenticated/salah'
+import { Route as AuthenticatedRemindersRouteImport } from './routes/_authenticated/reminders'
 import { Route as AuthenticatedQuranRouteImport } from './routes/_authenticated/quran'
 import { Route as AuthenticatedJournalRouteImport } from './routes/_authenticated/journal'
 import { Route as AuthenticatedGratitudeRouteImport } from './routes/_authenticated/gratitude'
@@ -37,6 +38,11 @@ const IndexRoute = IndexRouteImport.update({
 const AuthenticatedSalahRoute = AuthenticatedSalahRouteImport.update({
   id: '/salah',
   path: '/salah',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedRemindersRoute = AuthenticatedRemindersRouteImport.update({
+  id: '/reminders',
+  path: '/reminders',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const AuthenticatedQuranRoute = AuthenticatedQuranRouteImport.update({
@@ -79,6 +85,7 @@ export interface FileRoutesByFullPath {
   '/gratitude': typeof AuthenticatedGratitudeRoute
   '/journal': typeof AuthenticatedJournalRoute
   '/quran': typeof AuthenticatedQuranRoute
+  '/reminders': typeof AuthenticatedRemindersRoute
   '/salah': typeof AuthenticatedSalahRoute
 }
 export interface FileRoutesByTo {
@@ -90,6 +97,7 @@ export interface FileRoutesByTo {
   '/gratitude': typeof AuthenticatedGratitudeRoute
   '/journal': typeof AuthenticatedJournalRoute
   '/quran': typeof AuthenticatedQuranRoute
+  '/reminders': typeof AuthenticatedRemindersRoute
   '/salah': typeof AuthenticatedSalahRoute
 }
 export interface FileRoutesById {
@@ -103,6 +111,7 @@ export interface FileRoutesById {
   '/_authenticated/gratitude': typeof AuthenticatedGratitudeRoute
   '/_authenticated/journal': typeof AuthenticatedJournalRoute
   '/_authenticated/quran': typeof AuthenticatedQuranRoute
+  '/_authenticated/reminders': typeof AuthenticatedRemindersRoute
   '/_authenticated/salah': typeof AuthenticatedSalahRoute
 }
 export interface FileRouteTypes {
@@ -116,6 +125,7 @@ export interface FileRouteTypes {
     | '/gratitude'
     | '/journal'
     | '/quran'
+    | '/reminders'
     | '/salah'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -127,6 +137,7 @@ export interface FileRouteTypes {
     | '/gratitude'
     | '/journal'
     | '/quran'
+    | '/reminders'
     | '/salah'
   id:
     | '__root__'
@@ -139,6 +150,7 @@ export interface FileRouteTypes {
     | '/_authenticated/gratitude'
     | '/_authenticated/journal'
     | '/_authenticated/quran'
+    | '/_authenticated/reminders'
     | '/_authenticated/salah'
   fileRoutesById: FileRoutesById
 }
@@ -176,6 +188,13 @@ declare module '@tanstack/react-router' {
       path: '/salah'
       fullPath: '/salah'
       preLoaderRoute: typeof AuthenticatedSalahRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/reminders': {
+      id: '/_authenticated/reminders'
+      path: '/reminders'
+      fullPath: '/reminders'
+      preLoaderRoute: typeof AuthenticatedRemindersRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/quran': {
@@ -230,6 +249,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedGratitudeRoute: typeof AuthenticatedGratitudeRoute
   AuthenticatedJournalRoute: typeof AuthenticatedJournalRoute
   AuthenticatedQuranRoute: typeof AuthenticatedQuranRoute
+  AuthenticatedRemindersRoute: typeof AuthenticatedRemindersRoute
   AuthenticatedSalahRoute: typeof AuthenticatedSalahRoute
 }
 
@@ -240,6 +260,7 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedGratitudeRoute: AuthenticatedGratitudeRoute,
   AuthenticatedJournalRoute: AuthenticatedJournalRoute,
   AuthenticatedQuranRoute: AuthenticatedQuranRoute,
+  AuthenticatedRemindersRoute: AuthenticatedRemindersRoute,
   AuthenticatedSalahRoute: AuthenticatedSalahRoute,
 }
 

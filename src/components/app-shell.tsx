@@ -1,10 +1,11 @@
 import { Link, useLocation, useNavigate } from "@tanstack/react-router";
-import { BookOpen, Heart, Home, LogOut, Menu, Moon, Sparkles, PenLine, Star, Target } from "lucide-react";
+import { Bell, BookOpen, Heart, Home, LogOut, Menu, Moon, Sparkles, PenLine, Star, Target } from "lucide-react";
 import { useState, type ReactNode } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useQueryClient } from "@tanstack/react-query";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { useReminderScheduler } from "@/lib/reminders";
 
 const NAV = [
   { to: "/dashboard", label: "Today", icon: Home },
@@ -16,11 +17,16 @@ const NAV = [
   { to: "/dhikr", label: "Adhkar", icon: Star },
 ] as const;
 
+const SECONDARY_NAV = [
+  { to: "/reminders", label: "Reminders", icon: Bell },
+] as const;
+
 export function AppShell({ children }: { children: ReactNode }) {
   const location = useLocation();
   const navigate = useNavigate();
   const qc = useQueryClient();
   const [open, setOpen] = useState(false);
+  useReminderScheduler();
 
   async function signOut() {
     await qc.cancelQueries();
@@ -41,7 +47,12 @@ export function AppShell({ children }: { children: ReactNode }) {
             </NavLink>
           ))}
         </nav>
-        <div className="border-t border-sidebar-border p-3">
+        <div className="space-y-1 border-t border-sidebar-border p-3">
+          {SECONDARY_NAV.map((n) => (
+            <NavLink key={n.to} to={n.to} active={location.pathname === n.to} icon={n.icon}>
+              {n.label}
+            </NavLink>
+          ))}
           <Button onClick={signOut} variant="ghost" className="w-full justify-start gap-2 text-sidebar-foreground">
             <LogOut className="h-4 w-4" /> Sign out
           </Button>
@@ -54,13 +65,23 @@ export function AppShell({ children }: { children: ReactNode }) {
           <Link to="/dashboard" className="flex items-center gap-2 font-display text-lg text-primary">
             <Sparkles className="h-4 w-4 text-gold" /> Siraat
           </Link>
-          <Button variant="ghost" size="icon" onClick={() => setOpen((v) => !v)} aria-label="Menu">
-            <Menu className="h-5 w-5" />
-          </Button>
+          <div className="flex items-center gap-1">
+            <Link to="/reminders" aria-label="Reminders" className="rounded-md p-2 text-muted-foreground hover:bg-accent">
+              <Bell className="h-5 w-5" />
+            </Link>
+            <Button variant="ghost" size="icon" onClick={() => setOpen((v) => !v)} aria-label="Menu">
+              <Menu className="h-5 w-5" />
+            </Button>
+          </div>
         </header>
         {open && (
           <div className="border-b bg-sidebar px-3 py-2 lg:hidden">
             {NAV.map((n) => (
+              <NavLink key={n.to} to={n.to} active={location.pathname === n.to} icon={n.icon} onClick={() => setOpen(false)}>
+                {n.label}
+              </NavLink>
+            ))}
+            {SECONDARY_NAV.map((n) => (
               <NavLink key={n.to} to={n.to} active={location.pathname === n.to} icon={n.icon} onClick={() => setOpen(false)}>
                 {n.label}
               </NavLink>
