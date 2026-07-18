@@ -14,6 +14,48 @@ export type Database = {
   }
   public: {
     Tables: {
+      focus_sessions: {
+        Row: {
+          activity: string
+          category: string
+          created_at: string
+          date: string
+          ended_at: string | null
+          id: string
+          intention: string | null
+          minutes: number
+          note: string | null
+          started_at: string
+          user_id: string
+        }
+        Insert: {
+          activity: string
+          category: string
+          created_at?: string
+          date?: string
+          ended_at?: string | null
+          id?: string
+          intention?: string | null
+          minutes?: number
+          note?: string | null
+          started_at?: string
+          user_id: string
+        }
+        Update: {
+          activity?: string
+          category?: string
+          created_at?: string
+          date?: string
+          ended_at?: string | null
+          id?: string
+          intention?: string | null
+          minutes?: number
+          note?: string | null
+          started_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       gratitude_entries: {
         Row: {
           blessings: string[] | null
