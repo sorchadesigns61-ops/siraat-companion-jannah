@@ -11,7 +11,8 @@ import { format } from "date-fns";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { reflectJournal } from "@/lib/ai.functions";
-import { Sparkles } from "lucide-react";
+import { Sparkles, BookOpenCheck } from "lucide-react";
+import { comfortForMood } from "@/data/comfort-ayahs";
 
 export const Route = createFileRoute("/_authenticated/journal")({
   component: JournalPage,
