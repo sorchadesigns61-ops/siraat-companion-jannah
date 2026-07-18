@@ -105,6 +105,21 @@ function JournalPage() {
               <SelectContent>{MOODS.map((m) => <SelectItem key={m} value={m}>{m}</SelectItem>)}</SelectContent>
             </Select>
           </div>
+          {(() => {
+            const comfort = comfortForMood(form.mood);
+            if (!comfort) return null;
+            return (
+              <div className="rounded-lg border border-gold/30 bg-gold/5 p-4">
+                <p className="mb-2 flex items-center gap-2 text-xs uppercase tracking-widest text-gold">
+                  <BookOpenCheck className="h-3 w-3" /> A reminder for a {form.mood} heart
+                </p>
+                <p dir="rtl" className="font-display text-xl leading-loose text-primary">{comfort.arabic}</p>
+                <p className="mt-2 text-sm">{comfort.translation}</p>
+                <p className="mt-1 text-xs text-gold">— {comfort.reference}</p>
+                {comfort.note && <p className="mt-2 text-xs italic text-muted-foreground">{comfort.note}</p>}
+              </div>
+            );
+          })()}
           {([
             ["did_well", "What did I do well today?"],
             ["mistakes", "What do I want to improve?"],
