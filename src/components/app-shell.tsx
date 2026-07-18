@@ -1,5 +1,5 @@
 import { Link, useLocation, useNavigate } from "@tanstack/react-router";
-import { BookOpen, Heart, Home, LogOut, Menu, Moon, Sparkles, PenLine, Star } from "lucide-react";
+import { BookOpen, Heart, Home, LogOut, Menu, Moon, Sparkles, PenLine, Star, Target } from "lucide-react";
 import { useState, type ReactNode } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useQueryClient } from "@tanstack/react-query";
@@ -10,6 +10,7 @@ const NAV = [
   { to: "/dashboard", label: "Today", icon: Home },
   { to: "/salah", label: "Salah", icon: Moon },
   { to: "/quran", label: "Qur'an", icon: BookOpen },
+  { to: "/focus", label: "Focus", icon: Target },
   { to: "/journal", label: "Muhasabah", icon: PenLine },
   { to: "/gratitude", label: "Gratitude", icon: Heart },
   { to: "/dhikr", label: "Adhkar", icon: Star },

@@ -16,6 +16,7 @@ import { Route as AuthenticatedSalahRouteImport } from './routes/_authenticated/
 import { Route as AuthenticatedQuranRouteImport } from './routes/_authenticated/quran'
 import { Route as AuthenticatedJournalRouteImport } from './routes/_authenticated/journal'
 import { Route as AuthenticatedGratitudeRouteImport } from './routes/_authenticated/gratitude'
+import { Route as AuthenticatedFocusRouteImport } from './routes/_authenticated/focus'
 import { Route as AuthenticatedDhikrRouteImport } from './routes/_authenticated/dhikr'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
 
@@ -53,6 +54,11 @@ const AuthenticatedGratitudeRoute = AuthenticatedGratitudeRouteImport.update({
   path: '/gratitude',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedFocusRoute = AuthenticatedFocusRouteImport.update({
+  id: '/focus',
+  path: '/focus',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedDhikrRoute = AuthenticatedDhikrRouteImport.update({
   id: '/dhikr',
   path: '/dhikr',
@@ -69,6 +75,7 @@ export interface FileRoutesByFullPath {
   '/auth': typeof AuthRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
   '/dhikr': typeof AuthenticatedDhikrRoute
+  '/focus': typeof AuthenticatedFocusRoute
   '/gratitude': typeof AuthenticatedGratitudeRoute
   '/journal': typeof AuthenticatedJournalRoute
   '/quran': typeof AuthenticatedQuranRoute
@@ -79,6 +86,7 @@ export interface FileRoutesByTo {
   '/auth': typeof AuthRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
   '/dhikr': typeof AuthenticatedDhikrRoute
+  '/focus': typeof AuthenticatedFocusRoute
   '/gratitude': typeof AuthenticatedGratitudeRoute
   '/journal': typeof AuthenticatedJournalRoute
   '/quran': typeof AuthenticatedQuranRoute
@@ -91,6 +99,7 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
   '/_authenticated/dhikr': typeof AuthenticatedDhikrRoute
+  '/_authenticated/focus': typeof AuthenticatedFocusRoute
   '/_authenticated/gratitude': typeof AuthenticatedGratitudeRoute
   '/_authenticated/journal': typeof AuthenticatedJournalRoute
   '/_authenticated/quran': typeof AuthenticatedQuranRoute
@@ -103,6 +112,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/dashboard'
     | '/dhikr'
+    | '/focus'
     | '/gratitude'
     | '/journal'
     | '/quran'
@@ -113,6 +123,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/dashboard'
     | '/dhikr'
+    | '/focus'
     | '/gratitude'
     | '/journal'
     | '/quran'
@@ -124,6 +135,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/_authenticated/dashboard'
     | '/_authenticated/dhikr'
+    | '/_authenticated/focus'
     | '/_authenticated/gratitude'
     | '/_authenticated/journal'
     | '/_authenticated/quran'
@@ -187,6 +199,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedGratitudeRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/focus': {
+      id: '/_authenticated/focus'
+      path: '/focus'
+      fullPath: '/focus'
+      preLoaderRoute: typeof AuthenticatedFocusRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/dhikr': {
       id: '/_authenticated/dhikr'
       path: '/dhikr'
@@ -207,6 +226,7 @@ declare module '@tanstack/react-router' {
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
   AuthenticatedDhikrRoute: typeof AuthenticatedDhikrRoute
+  AuthenticatedFocusRoute: typeof AuthenticatedFocusRoute
   AuthenticatedGratitudeRoute: typeof AuthenticatedGratitudeRoute
   AuthenticatedJournalRoute: typeof AuthenticatedJournalRoute
   AuthenticatedQuranRoute: typeof AuthenticatedQuranRoute
@@ -216,6 +236,7 @@ interface AuthenticatedRouteRouteChildren {
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
   AuthenticatedDhikrRoute: AuthenticatedDhikrRoute,
+  AuthenticatedFocusRoute: AuthenticatedFocusRoute,
   AuthenticatedGratitudeRoute: AuthenticatedGratitudeRoute,
   AuthenticatedJournalRoute: AuthenticatedJournalRoute,
   AuthenticatedQuranRoute: AuthenticatedQuranRoute,
