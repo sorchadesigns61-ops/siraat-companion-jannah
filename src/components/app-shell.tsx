@@ -81,6 +81,11 @@ export function AppShell({ children }: { children: ReactNode }) {
                 {n.label}
               </NavLink>
             ))}
+            {SECONDARY_NAV.map((n) => (
+              <NavLink key={n.to} to={n.to} active={location.pathname === n.to} icon={n.icon} onClick={() => setOpen(false)}>
+                {n.label}
+              </NavLink>
+            ))}
             <Button onClick={signOut} variant="ghost" className="w-full justify-start gap-2">
               <LogOut className="h-4 w-4" /> Sign out
             </Button>
