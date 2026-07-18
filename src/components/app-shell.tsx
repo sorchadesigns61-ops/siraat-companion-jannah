@@ -26,6 +26,7 @@ export function AppShell({ children }: { children: ReactNode }) {
   const navigate = useNavigate();
   const qc = useQueryClient();
   const [open, setOpen] = useState(false);
+  useReminderScheduler();
 
   async function signOut() {
     await qc.cancelQueries();
