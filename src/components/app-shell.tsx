@@ -1,5 +1,5 @@
 import { Link, useLocation, useNavigate } from "@tanstack/react-router";
-import { BookOpen, Heart, Home, LogOut, Menu, Moon, Sparkles, PenLine, Star } from "lucide-react";
+import { BookOpen, Heart, Home, LogOut, Menu, Moon, Sparkles, PenLine, Star, Target } from "lucide-react";
 import { useState, type ReactNode } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useQueryClient } from "@tanstack/react-query";
@@ -10,6 +10,7 @@ const NAV = [
   { to: "/dashboard", label: "Today", icon: Home },
   { to: "/salah", label: "Salah", icon: Moon },
   { to: "/quran", label: "Qur'an", icon: BookOpen },
+  { to: "/focus", label: "Focus", icon: Target },
   { to: "/journal", label: "Muhasabah", icon: PenLine },
   { to: "/gratitude", label: "Gratitude", icon: Heart },
   { to: "/dhikr", label: "Adhkar", icon: Star },
@@ -73,7 +74,7 @@ export function AppShell({ children }: { children: ReactNode }) {
         <main className="min-w-0 flex-1">{children}</main>
 
         {/* Mobile bottom tab bar */}
-        <nav className="sticky bottom-0 z-30 grid grid-cols-6 border-t bg-background/95 backdrop-blur lg:hidden">
+        <nav className="sticky bottom-0 z-30 grid grid-cols-7 border-t bg-background/95 backdrop-blur lg:hidden">
           {NAV.map((n) => {
             const Active = location.pathname === n.to;
             return (
