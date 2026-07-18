@@ -1,10 +1,11 @@
 import { Link, useLocation, useNavigate } from "@tanstack/react-router";
-import { BookOpen, Heart, Home, LogOut, Menu, Moon, Sparkles, PenLine, Star, Target } from "lucide-react";
+import { Bell, BookOpen, Heart, Home, LogOut, Menu, Moon, Sparkles, PenLine, Star, Target } from "lucide-react";
 import { useState, type ReactNode } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useQueryClient } from "@tanstack/react-query";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { useReminderScheduler } from "@/lib/reminders";
 
 const NAV = [
   { to: "/dashboard", label: "Today", icon: Home },
@@ -14,6 +15,10 @@ const NAV = [
   { to: "/journal", label: "Muhasabah", icon: PenLine },
   { to: "/gratitude", label: "Gratitude", icon: Heart },
   { to: "/dhikr", label: "Adhkar", icon: Star },
+] as const;
+
+const SECONDARY_NAV = [
+  { to: "/reminders", label: "Reminders", icon: Bell },
 ] as const;
 
 export function AppShell({ children }: { children: ReactNode }) {
